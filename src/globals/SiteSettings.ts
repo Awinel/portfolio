@@ -21,6 +21,7 @@ export const SiteSettings: GlobalConfig = {
           admin: {
             description: 'Lucide icon name in PascalCase (e.g. Database, Cloud, Zap)',
           },
+          defaultValue: 'Database',
         },
       ],
     },
