@@ -13,10 +13,6 @@ export default async function HomePage() {
   const payload = await getPayload({ config: payloadConfig })
   const { user } = await payload.auth({ headers })
 
-  const siteSettings = await payload.findGlobal({
-    slug: 'site-settings',
-  })
-
   return (
     <BlackHole>
       <div className="flex flex-col items-center justify-center h-screen text-white">
@@ -37,18 +33,6 @@ export default async function HomePage() {
         </div>
         <div className="text-center mb-4">
           <h3 className="my-4">This template includes:</h3>
-          <ul className="flex gap-4 ">
-            {siteSettings?.implementations?.map((implementation, index) => (
-              <li
-                className="flex items-center gap-2 py-2 px-4 rounded-md"
-                style={{ backgroundColor: implementation.color ?? '#000000' }}
-                key={index}
-              >
-                <LucideIcon name={implementation.icon ?? ''} className="size-4" />
-                {implementation.name}
-              </li>
-            ))}
-          </ul>
         </div>
         <div className="flex gap-4">
           <a
