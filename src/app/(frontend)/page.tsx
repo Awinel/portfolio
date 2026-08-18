@@ -7,6 +7,7 @@ import './styles.css'
 import BlackHole from '@/components/BlackHole'
 import LucideIcon from '@/components/LucideIcon'
 import { Gear } from '@/components/Gear'
+import { Lever } from '@/components/Lever'
 
 export default async function HomePage() {
   const headers = await getHeaders()
@@ -57,8 +58,11 @@ export default async function HomePage() {
             Documentation
           </a>
         </div>
-        <Gear className="relative top-9 left-15" />
-        <Gear className="" inverted />
+        <div className="flex items-end gap-2">
+          <Lever className="relative top-4" />
+          <Gear className="relative top-9 left-15" variant="default" />
+          <Gear className="" inverted variant="fine" />
+        </div>
       </div>
     </BlackHole>
   )
