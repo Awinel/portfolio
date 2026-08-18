@@ -15,7 +15,7 @@ function CornerDot({ className }: { className: string }) {
 export function PaperCard({ children, className }: { children: ReactNode; className?: string }) {
   return (
     <div
-      className={`relative border-2 border-[#d4b896] bg-[#FAF0D5] p-5 text-gray-500 ${className ?? ''}`}
+      className={`relative border-2 border-[#d4b896] bg-[#FAF0D5] text-gray-500 ${className ?? 'p-5'}`}
     >
       <CornerDot className="left-2 top-2" />
       <CornerDot className="right-2 top-2" />
