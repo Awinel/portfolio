@@ -6,6 +6,7 @@ import config from '@/payload.config'
 import './styles.css'
 import BlackHole from '@/components/BlackHole'
 import LucideIcon from '@/components/LucideIcon'
+import { Gear } from '@/components/Gear'
 
 export default async function HomePage() {
   const headers = await getHeaders()
@@ -34,6 +35,10 @@ export default async function HomePage() {
         <div className="text-center mb-4">
           <h3 className="my-4">This template includes:</h3>
         </div>
+
+        <div className="content">
+          <h1>Your Website Text</h1>
+        </div>
         <div className="flex gap-4">
           <a
             className="bg-gray-900 my-3 px-4 py-2 rounded-md"
@@ -52,6 +57,8 @@ export default async function HomePage() {
             Documentation
           </a>
         </div>
+        <Gear className="relative top-9 left-15" />
+        <Gear className="" inverted />
       </div>
     </BlackHole>
   )

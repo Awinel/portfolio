@@ -1,2 +1,37 @@
 @import 'tailwindcss';
 @import 'tailwind-animations';
+
+
+
+
+
+@utility corner-top-shape-bevel {
+  corner-top-shape: bevel;
+}
+
+@theme {
+  /* animations */
+  --animate-gear: gear 4s linear infinite;
+
+  @keyframes gear {
+    from {
+      transform: rotate(0deg);
+    }
+
+    to {
+      transform: rotate(360deg);
+    }
+  }
+
+  --animate-inverted-gear: inverted-gear 4s linear infinite;
+
+  @keyframes inverted-gear {
+    from {
+      transform: rotate(0deg);
+    }
+
+    to {
+      transform: rotate(-360deg);
+    }
+  }
+}
