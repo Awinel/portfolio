@@ -11,10 +11,16 @@ test.describe('Frontend', () => {
   test('can go on homepage', async ({ page }) => {
     await page.goto('http://localhost:3000')
 
-    await expect(page).toHaveTitle(/Payload Blank Template/)
+    await expect(page).toHaveTitle(/Awinel/)
 
-    const heading = page.locator('h1').first()
+    await expect(page.getByRole('heading', { level: 1 })).toHaveText('Awinel')
+  })
 
-    await expect(heading).toHaveText('Welcome to your new project.')
+  test('can go on portfolio page', async ({ page }) => {
+    await page.goto('http://localhost:3000/portfolio')
+
+    await expect(page).toHaveTitle(/Work/)
+
+    await expect(page.getByRole('heading', { level: 1 })).toHaveText('Benjamin Antonio Huerta Torres')
   })
 })
