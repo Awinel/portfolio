@@ -14,7 +14,7 @@ export function Hero() {
       <div className="mt-8 flex flex-col gap-3 animate-fade-in animate-delay-700 animate-duration-700 animate-fill-mode-both motion-reduce:animate-none sm:mt-10 sm:flex-row sm:flex-wrap sm:items-center sm:gap-4">
         <a
           className="inline-flex w-full items-center justify-center rounded-sm bg-zinc-200 px-5 py-3 font-body text-sm font-medium text-zinc-900 transition-[background-color,transform] hover:bg-white focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-zinc-400 active:scale-[0.98] sm:w-auto sm:py-2.5"
-          href="/portfolio"
+          href="/portfolio#projects-heading"
         >
           View projects
         </a>

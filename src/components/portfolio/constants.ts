@@ -12,7 +12,7 @@ export const PERSON_NAME = 'Benjamin Antonio Huerta Torres'
 export const PERSON_TITLE = 'Full Stack Web Developer'
 
 export const PERSON_BIO =
-  'Benjamin builds and ships the websites, web applications, and full-stack systems behind Awinel — from interface to infrastructure.'
+  'I build and ship the websites, web applications, and full-stack systems behind Awinel — from interface to infrastructure.'
 
 export const SKILL_GROUPS = [
   {
