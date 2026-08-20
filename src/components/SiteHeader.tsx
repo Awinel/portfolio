@@ -3,15 +3,31 @@
 import { useState } from 'react'
 
 import { AwinelLogo } from '@/components/AwinelLogo'
+import type { CmsMedia } from '@/lib/cms'
 
-const navLinks = [
+export type NavLink = {
+  href: string
+  label: string
+}
+
+const DEFAULT_NAV_LINKS: NavLink[] = [
   { href: '/', label: 'Home' },
   { href: '/portfolio', label: 'Work' },
   { href: '/#contact', label: 'Contact' },
-] as const
+]
 
-export function SiteHeader() {
+export function SiteHeader({
+  links,
+  logo,
+  title,
+}: {
+  links?: NavLink[]
+  logo?: CmsMedia | null
+  title?: string | null
+}) {
   const [menuOpen, setMenuOpen] = useState(false)
+  const navLinks = links && links.length > 0 ? links : DEFAULT_NAV_LINKS
+  const brand = title?.trim() || 'Awinel'
 
   return (
     <>
@@ -38,15 +54,21 @@ export function SiteHeader() {
             href="/"
             onClick={() => setMenuOpen(false)}
           >
-            <AwinelLogo size="header" />
+            <AwinelLogo
+              alt={logo?.alt ?? brand}
+              height={logo?.height}
+              size="header"
+              src={logo?.url}
+              width={logo?.width}
+            />
             <span className="hidden font-display text-sm font-semibold uppercase tracking-[0.2em] text-zinc-100 sm:inline">
-              Awinel
+              {brand}
             </span>
           </a>
 
           <ul className="hidden items-center gap-6 md:flex md:gap-8">
             {navLinks.map(({ href, label }) => (
-              <li key={href}>
+              <li key={`${label}-${href}`}>
                 <a
                   className="group relative font-body text-sm text-zinc-300 transition-colors hover:text-white focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-zinc-400"
                   href={href}
@@ -79,7 +101,7 @@ export function SiteHeader() {
           >
             <ul className="flex flex-col gap-1">
               {navLinks.map(({ href, label }) => (
-                <li key={href}>
+                <li key={`${label}-${href}`}>
                   <a
                     className="block rounded-sm px-3 py-2.5 font-body text-sm text-zinc-200 transition-colors hover:bg-white/5 hover:text-white focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-zinc-400"
                     href={href}

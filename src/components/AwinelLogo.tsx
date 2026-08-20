@@ -1,5 +1,7 @@
 import Image from 'next/image'
 
+import type { CmsMedia } from '@/lib/cms'
+
 /** Intrinsic asset dimensions (public/logo.png). Aspect ratio 3:2. */
 const LOGO_WIDTH = 300
 const LOGO_HEIGHT = 200
@@ -22,24 +24,36 @@ const variants = {
 } as const
 
 type AwinelLogoProps = {
+  alt?: string
   className?: string
+  height?: number
   priority?: boolean
   size?: keyof typeof variants
+  src?: string
+  width?: number
 }
 
-export function AwinelLogo({ className, priority = false, size = 'hero' }: AwinelLogoProps) {
+export function AwinelLogo({
+  alt = 'Awinel',
+  className,
+  height = LOGO_HEIGHT,
+  priority = false,
+  size = 'hero',
+  src = '/logo.png',
+  width = LOGO_WIDTH,
+}: AwinelLogoProps) {
   const variant = variants[size]
 
   return (
     <Image
-      alt="Awinel"
+      alt={alt}
       className={`${variant.className} shrink-0 ${className ?? ''}`}
-      height={LOGO_HEIGHT}
+      height={height}
       priority={priority}
       quality={90}
       sizes={variant.sizes}
-      src="/logo.png"
-      width={LOGO_WIDTH}
+      src={src}
+      width={width}
     />
   )
 }

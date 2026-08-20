@@ -87,8 +87,16 @@ export interface Config {
     defaultIDType: number;
   };
   fallbackLocale: null;
-  globals: {};
-  globalsSelect: {};
+  globals: {
+    settings: Setting;
+    portfolio: Portfolio;
+    'landing-page': LandingPage;
+  };
+  globalsSelect: {
+    settings: SettingsSelect<false> | SettingsSelect<true>;
+    portfolio: PortfolioSelect<false> | PortfolioSelect<true>;
+    'landing-page': LandingPageSelect<false> | LandingPageSelect<true>;
+  };
   locale: null;
   widgets: {
     collections: CollectionsWidget;
@@ -314,6 +322,251 @@ export interface PayloadMigrationsSelect<T extends boolean = true> {
   batch?: T;
   updatedAt?: T;
   createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "settings".
+ */
+export interface Setting {
+  id: number;
+  Title?: string | null;
+  logo?: (number | null) | Media;
+  email?: string | null;
+  nav?: {
+    links?:
+      | {
+          label?: string | null;
+          href?: string | null;
+          id?: string | null;
+        }[]
+      | null;
+  };
+  footer?: {
+    copyright?: string | null;
+    socialLinks?:
+      | {
+          label?: string | null;
+          href?: string | null;
+          id?: string | null;
+        }[]
+      | null;
+  };
+  updatedAt?: string | null;
+  createdAt?: string | null;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "portfolio".
+ */
+export interface Portfolio {
+  id: number;
+  hero?: {
+    title?: string | null;
+    heading?: string | null;
+    subheading?: string | null;
+    description?: string | null;
+    profileImage?: (number | null) | Media;
+  };
+  skills?: {
+    title?: string | null;
+    skillSet?:
+      | {
+          name?: string | null;
+          description?: string | null;
+          skills?: string | null;
+          id?: string | null;
+        }[]
+      | null;
+  };
+  projects?: {
+    title?: string | null;
+    projectSet?:
+      | {
+          projectName?: string | null;
+          projectSubheading?: string | null;
+          projectDescription?: string | null;
+          /**
+           * eg: HTML CSS JavaScript React Next.js
+           */
+          projectStack?: string | null;
+          /**
+           * eg: https://www.example.com
+           */
+          projectUrl?: string | null;
+          id?: string | null;
+        }[]
+      | null;
+  };
+  updatedAt?: string | null;
+  createdAt?: string | null;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "landing-page".
+ */
+export interface LandingPage {
+  id: number;
+  hero?: {
+    heading?: string | null;
+    subheading?: string | null;
+    description?: string | null;
+    ctas?:
+      | {
+          label?: string | null;
+          href?: string | null;
+          style?: ('primary' | 'secondary') | null;
+          id?: string | null;
+        }[]
+      | null;
+  };
+  systemLayers?: {
+    title?: string | null;
+    items?:
+      | {
+          heading?: string | null;
+          subheading?: string | null;
+          /**
+           * eg: HTML CSS JavaScript React Next.js
+           */
+          stack?: string | null;
+          description?: string | null;
+          id?: string | null;
+        }[]
+      | null;
+  };
+  contact?: {
+    title?: string | null;
+    subheading?: string | null;
+    description?: string | null;
+  };
+  updatedAt?: string | null;
+  createdAt?: string | null;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "settings_select".
+ */
+export interface SettingsSelect<T extends boolean = true> {
+  Title?: T;
+  logo?: T;
+  email?: T;
+  nav?:
+    | T
+    | {
+        links?:
+          | T
+          | {
+              label?: T;
+              href?: T;
+              id?: T;
+            };
+      };
+  footer?:
+    | T
+    | {
+        copyright?: T;
+        socialLinks?:
+          | T
+          | {
+              label?: T;
+              href?: T;
+              id?: T;
+            };
+      };
+  updatedAt?: T;
+  createdAt?: T;
+  globalType?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "portfolio_select".
+ */
+export interface PortfolioSelect<T extends boolean = true> {
+  hero?:
+    | T
+    | {
+        title?: T;
+        heading?: T;
+        subheading?: T;
+        description?: T;
+        profileImage?: T;
+      };
+  skills?:
+    | T
+    | {
+        title?: T;
+        skillSet?:
+          | T
+          | {
+              name?: T;
+              description?: T;
+              skills?: T;
+              id?: T;
+            };
+      };
+  projects?:
+    | T
+    | {
+        title?: T;
+        projectSet?:
+          | T
+          | {
+              projectName?: T;
+              projectSubheading?: T;
+              projectDescription?: T;
+              projectStack?: T;
+              projectUrl?: T;
+              id?: T;
+            };
+      };
+  updatedAt?: T;
+  createdAt?: T;
+  globalType?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "landing-page_select".
+ */
+export interface LandingPageSelect<T extends boolean = true> {
+  hero?:
+    | T
+    | {
+        heading?: T;
+        subheading?: T;
+        description?: T;
+        ctas?:
+          | T
+          | {
+              label?: T;
+              href?: T;
+              style?: T;
+              id?: T;
+            };
+      };
+  systemLayers?:
+    | T
+    | {
+        title?: T;
+        items?:
+          | T
+          | {
+              heading?: T;
+              subheading?: T;
+              stack?: T;
+              description?: T;
+              id?: T;
+            };
+      };
+  contact?:
+    | T
+    | {
+        title?: T;
+        subheading?: T;
+        description?: T;
+      };
+  updatedAt?: T;
+  createdAt?: T;
+  globalType?: T;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema

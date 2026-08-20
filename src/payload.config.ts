@@ -12,6 +12,9 @@ import { Media } from './collections/Media'
 
 // Plugins
 import { vercelBlobStorage } from '@payloadcms/storage-vercel-blob'
+import { LandingPage } from './globals/LandingPage'
+import { Portfolio } from './globals/Portfolio'
+import { Settings } from './globals/Settings'
 
 const filename = fileURLToPath(import.meta.url)
 const dirname = path.dirname(filename)
@@ -24,6 +27,7 @@ export default buildConfig({
     },
   },
   collections: [Users, Media],
+  globals: [Settings, Portfolio, LandingPage],
   editor: lexicalEditor(),
   secret: process.env.PAYLOAD_SECRET || '',
   typescript: {
