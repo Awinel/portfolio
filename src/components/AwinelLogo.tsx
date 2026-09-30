@@ -39,7 +39,7 @@ export function AwinelLogo({
   height = LOGO_HEIGHT,
   priority = false,
   size = 'hero',
-  src = '/logo.png',
+  src = '/logo-2.svg',
   width = LOGO_WIDTH,
 }: AwinelLogoProps) {
   const variant = variants[size]

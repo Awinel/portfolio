@@ -33,13 +33,13 @@ export function SiteHeader({
     <>
       <div
         aria-hidden
-        className="nav-scroll-blur pointer-events-none fixed top-0 right-0 left-0 z-40 h-[4.25rem] sm:h-24"
+        className="nav-scroll-blur pointer-events-none fixed top-0 right-0 left-0 z-40 h-17 sm:h-24"
       />
 
       <header className="glass-nav fixed top-0 right-0 left-0 z-50 shadow-[0_8px_32px_rgba(0,0,0,0.22)]">
         <div
           aria-hidden
-          className="absolute inset-0 backdrop-blur-2xl supports-[backdrop-filter]:backdrop-blur-3xl"
+          className="absolute inset-0 backdrop-blur-2xl supports-backdrop-filter:backdrop-blur-3xl"
         />
         <div aria-hidden className="absolute inset-0 bg-white/10" />
         <div aria-hidden className="absolute inset-x-0 top-0 h-px bg-white/30" />
@@ -61,9 +61,6 @@ export function SiteHeader({
               src={logo?.url}
               width={logo?.width}
             />
-            <span className="hidden font-display text-sm font-semibold uppercase tracking-[0.2em] text-zinc-100 sm:inline">
-              {brand}
-            </span>
           </a>
 
           <ul className="hidden items-center gap-6 md:flex md:gap-8">

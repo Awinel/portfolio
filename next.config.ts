@@ -14,7 +14,10 @@ const nextConfig: NextConfig = {
         pathname: '/api/media/file/**',
       },
       {
-        pathname: '/logo.png',
+        pathname: '/logo.svg',
+      },
+      {
+        pathname: '/logo-2.svg',
       },
       {
         pathname: '/me.png',
