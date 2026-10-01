@@ -95,6 +95,14 @@ export const Portfolio: GlobalConfig = {
               },
             },
             {
+              name: 'projectImage',
+              type: 'upload',
+              relationTo: 'media',
+              admin: {
+                description: 'Cover image shown on the project card',
+              },
+            },
+            {
               name: 'projectUrl',
               type: 'text',
               admin: {

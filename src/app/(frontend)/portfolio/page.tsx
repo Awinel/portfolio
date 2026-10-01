@@ -39,6 +39,7 @@ export default async function PortfolioPage() {
     .map((project) => ({
       href: project.projectUrl ?? undefined,
       role: project.projectSubheading ?? undefined,
+      image: getMedia(project.projectImage),
       stack: splitTokens(project.projectStack),
       summary: project.projectDescription ?? '',
       title: project.projectName,

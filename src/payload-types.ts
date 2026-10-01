@@ -390,6 +390,10 @@ export interface Portfolio {
            */
           projectStack?: string | null;
           /**
+           * Cover image shown on the project card
+           */
+          projectImage?: (number | null) | Media;
+          /**
            * eg: https://www.example.com
            */
           projectUrl?: string | null;
@@ -515,6 +519,7 @@ export interface PortfolioSelect<T extends boolean = true> {
               projectSubheading?: T;
               projectDescription?: T;
               projectStack?: T;
+              projectImage?: T;
               projectUrl?: T;
               id?: T;
             };
