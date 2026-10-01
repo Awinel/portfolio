@@ -61,6 +61,9 @@ export default async function RootLayout(props: { children: React.ReactNode }) {
       className={`${bigShoulders.variable} ${sourceSans.variable} ${ibmPlexMono.variable}`}
       lang="en"
     >
+      <head>
+        <link rel="icon" href="/favicon.png" />
+      </head>
       <body className="min-h-screen bg-black font-body antialiased">
         <SiteHeader links={links} logo={getMedia(settings.logo)} title={settings.Title} />
         <main>{children}</main>

@@ -40,12 +40,14 @@ export function SkillGroups({
                 </h3>
               ) : null}
               {group.description ? (
-                <p className="mt-2 font-body text-sm leading-relaxed text-muted">{group.description}</p>
+                <p className="mt-2 font-body text-sm leading-relaxed text-muted">
+                  {group.description}
+                </p>
               ) : null}
               {group.items.length > 0 ? (
                 <ul className="mt-3 flex flex-wrap gap-x-3 gap-y-1">
-                  {group.items.map((item) => (
-                    <li className="font-mono text-xs text-zinc-400" key={item}>
+                  {group.items.map((item, index) => (
+                    <li className="font-mono text-xs text-zinc-400" key={index}>
                       {item}
                     </li>
                   ))}

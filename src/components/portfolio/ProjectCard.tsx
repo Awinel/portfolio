@@ -52,7 +52,7 @@ export function ProjectCard({ project }: { project: Project }) {
         ) : null}
 
         {href ? (
-          <div className="mt-5 flex flex-wrap gap-3">
+          <div className="mt-5 flex flex-wrap gap-3 justify-center">
             <a
               className="inline-flex items-center rounded-sm border border-border-dark bg-panel/40 px-3 py-1.5 font-body text-xs font-medium text-ink transition-colors hover:border-zinc-500 hover:text-white focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-zinc-400 sm:text-sm"
               href={href}
