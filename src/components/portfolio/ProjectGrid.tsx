@@ -16,7 +16,8 @@ export function ProjectGrid({
   return (
     <section
       aria-labelledby={title ? 'projects-heading' : undefined}
-      className="border-t border-border-dark py-12 sm:py-16 md:py-20"
+      className="border-t border-border-dark py-12 sm:py-16 md:py-20 scroll-mt-20"
+      id="projects"
     >
       {title ? <SectionHeading id="projects-heading">{title}</SectionHeading> : null}
 

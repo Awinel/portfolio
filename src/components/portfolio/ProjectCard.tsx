@@ -25,6 +25,7 @@ export function ProjectCard({ project }: { project: Project }) {
             quality={90}
             sizes="(max-width: 640px) 100vw, (max-width: 1152px) 50vw, 560px"
             src={image.url}
+            loading="eager"
           />
         </div>
       ) : null}
