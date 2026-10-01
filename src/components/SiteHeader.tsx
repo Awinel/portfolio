@@ -1,6 +1,6 @@
 'use client'
 
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 
 import { AwinelLogo } from '@/components/AwinelLogo'
 import type { CmsMedia } from '@/lib/cms'
@@ -26,14 +26,25 @@ export function SiteHeader({
   title?: string | null
 }) {
   const [menuOpen, setMenuOpen] = useState(false)
+  const [compactLogo, setCompactLogo] = useState(false)
   const navLinks = links && links.length > 0 ? links : DEFAULT_NAV_LINKS
   const brand = title?.trim() || 'Awinel'
+
+  useEffect(() => {
+    const onScroll = () => {
+      setCompactLogo(window.scrollY > 12)
+    }
+
+    onScroll()
+    window.addEventListener('scroll', onScroll, { passive: true })
+    return () => window.removeEventListener('scroll', onScroll)
+  }, [])
 
   return (
     <>
       <div
         aria-hidden
-        className="nav-scroll-blur pointer-events-none fixed top-0 right-0 left-0 z-40 h-17 sm:h-24"
+        className={`nav-scroll-blur pointer-events-none fixed top-0 right-0 left-0 z-40 transition-[height] duration-300 ease-out motion-reduce:transition-none ${compactLogo ? 'h-16 sm:h-22' : 'h-20 sm:h-26'}`}
       />
 
       <header className="glass-nav fixed top-0 right-0 left-0 z-50 shadow-[0_8px_32px_rgba(0,0,0,0.22)]">
@@ -57,7 +68,7 @@ export function SiteHeader({
             <AwinelLogo
               alt={logo?.alt ?? brand}
               height={logo?.height}
-              size="header"
+              size={compactLogo ? 'headerCompact' : 'header'}
               src={logo?.url}
               width={logo?.width}
             />
@@ -67,7 +78,7 @@ export function SiteHeader({
             {navLinks.map(({ href, label }) => (
               <li key={`${label}-${href}`}>
                 <a
-                  className="group relative font-body text-sm text-zinc-300 transition-colors hover:text-white focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-zinc-400"
+                  className="group relative font-body text-md text-zinc-300 transition-colors hover:text-white focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-zinc-400"
                   href={href}
                 >
                   {label}

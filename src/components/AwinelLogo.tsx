@@ -8,7 +8,14 @@ const LOGO_HEIGHT = 200
 
 const variants = {
   header: {
-    className: 'h-8 w-auto sm:h-9 md:h-10',
+    className:
+      'h-10 w-auto transition-[height] duration-300 ease-out motion-reduce:transition-none sm:h-11 md:h-12',
+    /** Max rendered width: 48px height × 1.5 ≈ 72px */
+    sizes: '72px',
+  },
+  headerCompact: {
+    className:
+      'h-8 w-auto transition-[height] duration-300 ease-out motion-reduce:transition-none sm:h-9 md:h-10',
     /** Max rendered width: 40px height × 1.5 ≈ 60px */
     sizes: '60px',
   },
