@@ -16,14 +16,16 @@ export function ContactStrip({
   return (
     <section
       aria-labelledby={title ? 'contact-heading' : undefined}
-      className="scroll-mt-[4.25rem] border-t border-border-dark py-12 sm:scroll-mt-24 sm:py-16 md:py-20"
+      className="scroll-mt-17 border-t border-border-dark py-12 sm:scroll-mt-24 sm:py-16 md:py-20"
       id="contact"
     >
       <div className="rounded-sm border border-border-dark bg-panel/50 p-5 sm:p-6 md:p-8">
         {title ? <SectionHeading id="contact-heading">{title}</SectionHeading> : null}
 
         {subheading ? (
-          <p className={`max-w-lg font-mono text-xs uppercase tracking-widest text-zinc-400 ${title ? 'mt-5 sm:mt-6' : ''}`}>
+          <p
+            className={`max-w-lg font-mono text-xs uppercase tracking-widest text-zinc-400 ${title ? 'mt-5 sm:mt-6' : ''}`}
+          >
             {subheading}
           </p>
         ) : null}
@@ -44,6 +46,11 @@ export function ContactStrip({
             {email}
           </a>
         ) : null}
+
+        <p className="mt-5 text-xs text-zinc-400">
+          Al contactarme, tus datos serán utilizados exclusivamente para responder a tu consulta y
+          gestionar tu solicitud de servicio.
+        </p>
       </div>
     </section>
   )
