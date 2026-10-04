@@ -25,6 +25,9 @@ export default buildConfig({
     importMap: {
       baseDir: path.resolve(dirname),
     },
+    components: {
+      beforeDashboard: ['src/components/beforeDashboard'],
+    },
   },
   collections: [Users, Media],
   globals: [Settings, Portfolio, LandingPage],
