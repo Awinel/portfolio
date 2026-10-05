@@ -19,7 +19,7 @@ export default function PostsPage() {
     <div className="relative min-h-screen text-ink">
       <BlackHoleBackground />
 
-      <div className="relative mx-auto w-full max-w-6xl px-4 pb-16 sm:px-6 sm:pb-20">
+      <div className="relative mx-auto w-full max-w-6xl px-4 sm:px-6">
         <header className="pb-10 pt-24 sm:pb-12 sm:pt-28 md:pt-32">
           <p className="font-mono text-xs uppercase tracking-[0.25em] text-muted animate-fade-in animate-duration-700 animate-fill-mode-both motion-reduce:animate-none">
             Blog

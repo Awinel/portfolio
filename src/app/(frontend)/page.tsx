@@ -1,7 +1,6 @@
 import type { Metadata } from 'next'
 
 import { BlackHoleBackground } from '@/components/BlackHole'
-import { ContactStrip } from '@/components/landing/ContactStrip'
 import { Hero } from '@/components/landing/Hero'
 import { StackCutaway } from '@/components/landing/StackCutaway'
 import { Wordmark } from '@/components/landing/Wordmark'
@@ -22,7 +21,7 @@ export async function generateMetadata(): Promise<Metadata> {
 }
 
 export default async function HomePage() {
-  const [landing, settings] = await Promise.all([getLandingPage(), getSettings()])
+  const landing = await getLandingPage()
   const layers = (landing.systemLayers?.items ?? []).map((item) => ({
     description: item.description,
     heading: item.heading,
@@ -35,7 +34,7 @@ export default async function HomePage() {
     <div className="relative min-h-screen text-ink">
       <BlackHoleBackground />
 
-      <div className="relative mx-auto w-full max-w-6xl px-4 pb-16 sm:px-6 sm:pb-20">
+      <div className="relative mx-auto w-full max-w-6xl px-4 sm:px-6">
         <Wordmark heading={landing.hero?.heading} />
         <Hero
           ctas={landing.hero?.ctas}
@@ -43,12 +42,6 @@ export default async function HomePage() {
           subheading={landing.hero?.subheading}
         />
         <StackCutaway items={layers} title={landing.systemLayers?.title} />
-        <ContactStrip
-          description={landing.contact?.description}
-          email={settings.email}
-          subheading={landing.contact?.subheading}
-          title={landing.contact?.title}
-        />
       </div>
     </div>
   )

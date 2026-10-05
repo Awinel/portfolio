@@ -1,11 +1,10 @@
 import type { Metadata } from 'next'
 
 import { BlackHoleBackground } from '@/components/BlackHole'
-import { ContactStrip } from '@/components/landing/ContactStrip'
 import { ProjectGrid } from '@/components/portfolio/ProjectGrid'
 import { SkillGroups } from '@/components/portfolio/SkillGroups'
 import { WorkIntro } from '@/components/portfolio/WorkIntro'
-import { getLandingPage, getMedia, getPortfolio, getSettings, splitTokens } from '@/lib/cms'
+import { getMedia, getPortfolio, splitTokens } from '@/lib/cms'
 
 export async function generateMetadata(): Promise<Metadata> {
   const portfolio = await getPortfolio()
@@ -19,11 +18,7 @@ export async function generateMetadata(): Promise<Metadata> {
 }
 
 export default async function PortfolioPage() {
-  const [portfolio, landing, settings] = await Promise.all([
-    getPortfolio(),
-    getLandingPage(),
-    getSettings(),
-  ])
+  const portfolio = await getPortfolio()
 
   const skillGroups = (portfolio.skills?.skillSet ?? []).map((group) => ({
     description: group.description,
@@ -49,7 +44,7 @@ export default async function PortfolioPage() {
     <div className="relative min-h-screen text-ink">
       <BlackHoleBackground />
 
-      <div className="relative mx-auto w-full max-w-6xl px-4 pb-16 sm:px-6 sm:pb-20">
+      <div className="relative mx-auto w-full max-w-6xl px-4 sm:px-6">
         <WorkIntro
           description={portfolio.hero?.description}
           heading={portfolio.hero?.heading}
@@ -59,12 +54,6 @@ export default async function PortfolioPage() {
         />
         <SkillGroups groups={skillGroups} title={portfolio.skills?.title} />
         <ProjectGrid projects={projects} title={portfolio.projects?.title} />
-        <ContactStrip
-          description={landing.contact?.description}
-          email={settings.email}
-          subheading={landing.contact?.subheading}
-          title={landing.contact?.title}
-        />
       </div>
     </div>
   )

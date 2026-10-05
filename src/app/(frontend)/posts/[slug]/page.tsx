@@ -38,7 +38,7 @@ export default function PostPage({ params }: Props) {
     <div className="relative min-h-screen text-ink">
       <BlackHoleBackground />
 
-      <div className="relative mx-auto w-full max-w-3xl px-4 pb-16 pt-24 sm:px-6 sm:pb-20 sm:pt-28 md:pt-32">
+      <div className="relative mx-auto w-full max-w-3xl px-4 pt-24 sm:px-6 sm:pt-28 md:pt-32">
         <a
           className="inline-flex items-center gap-2 font-mono text-xs uppercase tracking-widest text-zinc-400 transition-colors hover:text-white focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-zinc-400"
           href="/posts"
