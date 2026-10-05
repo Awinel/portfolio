@@ -15,6 +15,7 @@ import { vercelBlobStorage } from '@payloadcms/storage-vercel-blob'
 import { LandingPage } from './globals/LandingPage'
 import { Portfolio } from './globals/Portfolio'
 import { Settings } from './globals/Settings'
+import { Post } from './collections/Post'
 
 const filename = fileURLToPath(import.meta.url)
 const dirname = path.dirname(filename)
@@ -29,7 +30,7 @@ export default buildConfig({
       beforeDashboard: ['src/components/beforeDashboard'],
     },
   },
-  collections: [Users, Media],
+  collections: [Users, Media, Post],
   globals: [Settings, Portfolio, LandingPage],
   editor: lexicalEditor(),
   secret: process.env.PAYLOAD_SECRET || '',
