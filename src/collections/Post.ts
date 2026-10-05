@@ -31,7 +31,6 @@ export const Post: CollectionConfig = {
   versions: {
     drafts: {
       autosave: true,
-      schedulePublish: true,
     },
     maxPerDoc: 10,
   },
