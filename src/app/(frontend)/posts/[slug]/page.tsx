@@ -43,7 +43,7 @@ export default function PostPage({ params }: Props) {
           className="inline-flex items-center gap-2 font-mono text-xs uppercase tracking-widest text-zinc-400 transition-colors hover:text-white focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-zinc-400"
           href="/posts"
         >
-          <span aria-hidden>←</span> All notes
+          <span aria-hidden>←</span> Todas las publicaciones
         </a>
 
         <div className="mt-8 sm:mt-10">

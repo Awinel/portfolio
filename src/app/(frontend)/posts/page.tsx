@@ -22,10 +22,10 @@ export default function PostsPage() {
       <div className="relative mx-auto w-full max-w-6xl px-4 pb-16 sm:px-6 sm:pb-20">
         <header className="pb-10 pt-24 sm:pb-12 sm:pt-28 md:pt-32">
           <p className="font-mono text-xs uppercase tracking-[0.25em] text-muted animate-fade-in animate-duration-700 animate-fill-mode-both motion-reduce:animate-none">
-            Posts
+            Blog
           </p>
           <h1 className="mt-4 font-display text-3xl font-bold uppercase tracking-wide text-ink animate-slide-in-bottom animate-delay-200 animate-duration-700 animate-fill-mode-both motion-reduce:animate-none sm:text-4xl md:text-5xl">
-            Notes
+            Publicaciones
           </h1>
         </header>
 
