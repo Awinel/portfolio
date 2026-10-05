@@ -1,25 +1,33 @@
 import config from '@payload-config'
+import { cacheLife, cacheTag } from 'next/cache'
 import { getPayload } from 'payload'
-import { cache } from 'react'
 
+import { CACHE_TAGS } from '@/lib/cacheTags'
 import type { Media } from '@/payload-types'
 
-const getPayloadClient = cache(async () => getPayload({ config }))
-
-export const getSettings = cache(async () => {
-  const payload = await getPayloadClient()
+export async function getSettings() {
+  'use cache'
+  cacheTag(CACHE_TAGS.settings)
+  cacheLife('max')
+  const payload = await getPayload({ config })
   return payload.findGlobal({ slug: 'settings', depth: 1 })
-})
+}
 
-export const getLandingPage = cache(async () => {
-  const payload = await getPayloadClient()
+export async function getLandingPage() {
+  'use cache'
+  cacheTag(CACHE_TAGS.landingPage)
+  cacheLife('max')
+  const payload = await getPayload({ config })
   return payload.findGlobal({ slug: 'landing-page', depth: 1 })
-})
+}
 
-export const getPortfolio = cache(async () => {
-  const payload = await getPayloadClient()
+export async function getPortfolio() {
+  'use cache'
+  cacheTag(CACHE_TAGS.portfolio)
+  cacheLife('max')
+  const payload = await getPayload({ config })
   return payload.findGlobal({ slug: 'portfolio', depth: 1 })
-})
+}
 
 export function splitTokens(value?: string | null): string[] {
   if (!value) return []

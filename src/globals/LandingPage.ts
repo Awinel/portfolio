@@ -1,15 +1,16 @@
 import type { GlobalConfig } from 'payload'
 
 import { revalidateGlobal } from '@/hooks/revalidate'
+import { CACHE_TAGS } from '@/lib/cacheTags'
 
 export const LandingPage: GlobalConfig = {
   slug: 'landing-page',
   hooks: {
     afterChange: [
-      revalidateGlobal([
-        { path: '/' },
-        { path: '/portfolio' },
-      ]),
+      revalidateGlobal({
+        paths: [{ path: '/' }, { path: '/portfolio' }],
+        tags: [CACHE_TAGS.landingPage],
+      }),
     ],
   },
   fields: [

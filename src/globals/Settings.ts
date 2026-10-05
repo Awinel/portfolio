@@ -1,11 +1,17 @@
 import type { GlobalConfig } from 'payload'
 
 import { revalidateGlobal } from '@/hooks/revalidate'
+import { CACHE_TAGS } from '@/lib/cacheTags'
 
 export const Settings: GlobalConfig = {
   slug: 'settings',
   hooks: {
-    afterChange: [revalidateGlobal([{ path: '/', type: 'layout' }])],
+    afterChange: [
+      revalidateGlobal({
+        paths: [{ path: '/', type: 'layout' }],
+        tags: [CACHE_TAGS.settings],
+      }),
+    ],
   },
   fields: [
     {

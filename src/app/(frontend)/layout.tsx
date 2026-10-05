@@ -26,8 +26,6 @@ const ibmPlexMono = IBM_Plex_Mono({
   weight: ['400', '500'],
 })
 
-export const dynamic = 'force-static'
-
 export async function generateMetadata(): Promise<Metadata> {
   const settings = await getSettings()
   const siteTitle = settings.Title?.trim() || 'Awinel'
