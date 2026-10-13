@@ -69,6 +69,13 @@ export default async function PortfolioPage() {
           image={getMedia(portfolio.hero?.profileImage)}
           subheading={portfolio.hero?.subheading}
           title={portfolio.hero?.title}
+          ctas={
+            portfolio.hero?.ctas?.map((cta) => ({
+              label: cta.label ?? '',
+              href: cta.href ?? '',
+              style: cta.style ?? 'primary',
+            })) ?? []
+          }
         />
         <SkillGroups groups={skillGroups} title={portfolio.skills?.title} />
         <ProjectGrid projects={projects} title={portfolio.projects?.title} />

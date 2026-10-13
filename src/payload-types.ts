@@ -457,6 +457,14 @@ export interface Portfolio {
     heading?: string | null;
     subheading?: string | null;
     description?: string | null;
+    ctas?:
+      | {
+          label?: string | null;
+          href?: string | null;
+          style?: ('primary' | 'secondary') | null;
+          id?: string | null;
+        }[]
+      | null;
     profileImage?: (number | null) | Media;
   };
   skills?: {
@@ -615,6 +623,14 @@ export interface PortfolioSelect<T extends boolean = true> {
         heading?: T;
         subheading?: T;
         description?: T;
+        ctas?:
+          | T
+          | {
+              label?: T;
+              href?: T;
+              style?: T;
+              id?: T;
+            };
         profileImage?: T;
       };
   skills?:

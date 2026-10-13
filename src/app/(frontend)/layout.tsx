@@ -57,7 +57,7 @@ export default async function RootLayout(props: { children: React.ReactNode }) {
 
   return (
     <html
-      className={`${bigShoulders.variable} ${sourceSans.variable} ${ibmPlexMono.variable}`}
+      className={`${bigShoulders.variable} ${sourceSans.variable} ${ibmPlexMono.variable} scroll-smooth`}
       lang="en"
     >
       <head>

@@ -2,16 +2,24 @@ import Image from 'next/image'
 
 import type { CmsMedia } from '@/lib/cms'
 
+const primaryClassName =
+  'inline-flex w-full items-center justify-center rounded-sm bg-zinc-200 px-5 py-3 font-body text-sm font-medium text-zinc-900 transition-[background-color,transform] hover:bg-white focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-zinc-400 active:scale-[0.98] sm:w-auto sm:py-2.5'
+
+const secondaryClassName =
+  'inline-flex w-full items-center justify-center rounded-sm border border-border-dark bg-panel/40 px-5 py-3 font-body text-sm font-medium text-ink transition-colors hover:border-zinc-500 hover:text-white focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-zinc-400 sm:w-auto sm:py-2.5'
+
 const FALLBACK_WIDTH = 1200
 const FALLBACK_HEIGHT = 1600
 
 export function WorkIntro({
+  ctas,
   description,
   heading,
   image,
   subheading,
   title,
 }: {
+  ctas?: { label: string; href: string; style: 'primary' | 'secondary' }[] | null
   description?: string | null
   heading?: string | null
   image?: CmsMedia | null
@@ -25,7 +33,7 @@ export function WorkIntro({
     width: FALLBACK_WIDTH,
   }
 
-  if (!title && !heading && !subheading && !description && !image) return null
+  if (!title && !heading && !subheading && !description && !image && !ctas) return null
 
   return (
     <section
@@ -63,6 +71,19 @@ export function WorkIntro({
             >
               {description}
             </p>
+          ) : null}
+          {ctas ? (
+            <div className="mt-8 flex flex-col gap-3 animate-fade-in animate-delay-700 animate-duration-700 animate-fill-mode-both motion-reduce:animate-none sm:mt-10 sm:flex-row sm:flex-wrap sm:items-center sm:gap-4">
+              {ctas.map((cta) => (
+                <a
+                  key={cta.label}
+                  href={cta.href}
+                  className={cta.style === 'primary' ? primaryClassName : secondaryClassName}
+                >
+                  {cta.label}
+                </a>
+              ))}
+            </div>
           ) : null}
         </div>
 

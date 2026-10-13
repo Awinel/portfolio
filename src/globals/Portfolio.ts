@@ -50,6 +50,25 @@ export const Portfolio: GlobalConfig = {
           type: 'textarea',
         },
         {
+          name: 'ctas',
+          type: 'array',
+          fields: [
+            {
+              name: 'label',
+              type: 'text',
+            },
+            {
+              name: 'href',
+              type: 'text',
+            },
+            {
+              name: 'style',
+              type: 'select',
+              options: ['primary', 'secondary'],
+            },
+          ],
+        },
+        {
           name: 'profileImage',
           type: 'upload',
           relationTo: 'media',
