@@ -73,7 +73,7 @@ function WebsiteRow({ website }: { website: Website }) {
         <div className="flex items-center border-b border-border-dark bg-black/40 px-3 py-2">
           <span className="truncate font-mono text-[11px] text-zinc-500">{host}</span>
         </div>
-        <div className="relative aspect-video bg-zinc-900">
+        <div className="relative aspect-video overflow-hidden bg-zinc-900">
           {image ? (
             <Image
               alt={image.alt || title}
