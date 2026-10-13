@@ -493,6 +493,36 @@ export interface Portfolio {
         }[]
       | null;
   };
+  /**
+   * Live sites you have shipped. Each entry needs a public URL.
+   */
+  websites?: {
+    title?: string | null;
+    description?: string | null;
+    websiteSet?:
+      | {
+          name: string;
+          /**
+           * eg: Design and build
+           */
+          role?: string | null;
+          description?: string | null;
+          /**
+           * eg: HTML CSS JavaScript React Next.js
+           */
+          stack?: string | null;
+          /**
+           * Screenshot of the live site
+           */
+          image?: (number | null) | Media;
+          /**
+           * eg: https://www.example.com
+           */
+          url: string;
+          id?: string | null;
+        }[]
+      | null;
+  };
   updatedAt?: string | null;
   createdAt?: string | null;
 }
@@ -613,6 +643,23 @@ export interface PortfolioSelect<T extends boolean = true> {
               projectStack?: T;
               projectImage?: T;
               projectUrl?: T;
+              id?: T;
+            };
+      };
+  websites?:
+    | T
+    | {
+        title?: T;
+        description?: T;
+        websiteSet?:
+          | T
+          | {
+              name?: T;
+              role?: T;
+              description?: T;
+              stack?: T;
+              image?: T;
+              url?: T;
               id?: T;
             };
       };

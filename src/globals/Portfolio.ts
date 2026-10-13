@@ -1,7 +1,22 @@
-import type { GlobalConfig } from 'payload'
+import type { GlobalConfig, TextFieldSingleValidation } from 'payload'
 
 import { revalidateGlobal } from '@/hooks/revalidate'
 import { CACHE_TAGS } from '@/lib/cacheTags'
+
+const validateWebsiteUrl: TextFieldSingleValidation = (value) => {
+  if (typeof value !== 'string' || !value.trim()) return 'Enter the live site URL'
+
+  try {
+    const url = new URL(value)
+    if (url.protocol !== 'http:' && url.protocol !== 'https:') {
+      return 'Enter a URL starting with http:// or https://'
+    }
+  } catch {
+    return 'Enter a full URL, including https://'
+  }
+
+  return true
+}
 
 export const Portfolio: GlobalConfig = {
   slug: 'portfolio',
@@ -114,6 +129,75 @@ export const Portfolio: GlobalConfig = {
               admin: {
                 description: 'eg: https://www.example.com',
               },
+            },
+          ],
+        },
+      ],
+    },
+    {
+      name: 'websites',
+      type: 'group',
+      label: 'Websites',
+      admin: {
+        description: 'Live sites you have shipped. Each entry needs a public URL.',
+      },
+      fields: [
+        {
+          name: 'title',
+          type: 'text',
+        },
+        {
+          name: 'description',
+          type: 'textarea',
+        },
+        {
+          name: 'websiteSet',
+          type: 'array',
+          labels: {
+            singular: 'Website',
+            plural: 'Websites',
+          },
+          fields: [
+            {
+              name: 'name',
+              type: 'text',
+              required: true,
+            },
+            {
+              name: 'role',
+              type: 'text',
+              admin: {
+                description: 'eg: Design and build',
+              },
+            },
+            {
+              name: 'description',
+              type: 'textarea',
+            },
+            {
+              name: 'stack',
+              type: 'text',
+              admin: {
+                description: 'eg: HTML CSS JavaScript React Next.js',
+              },
+            },
+            {
+              name: 'image',
+              type: 'upload',
+              relationTo: 'media',
+              admin: {
+                description: 'Screenshot of the live site',
+              },
+            },
+            {
+              name: 'url',
+              type: 'text',
+              label: 'Live URL',
+              required: true,
+              admin: {
+                description: 'eg: https://www.example.com',
+              },
+              validate: validateWebsiteUrl,
             },
           ],
         },

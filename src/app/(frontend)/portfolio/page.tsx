@@ -3,6 +3,7 @@ import type { Metadata } from 'next'
 import { BlackHoleBackground } from '@/components/BlackHole'
 import { ProjectGrid } from '@/components/portfolio/ProjectGrid'
 import { SkillGroups } from '@/components/portfolio/SkillGroups'
+import { WebsiteGrid } from '@/components/portfolio/WebsiteGrid'
 import { WorkIntro } from '@/components/portfolio/WorkIntro'
 import { getMedia, getPortfolio, splitTokens } from '@/lib/cms'
 
@@ -40,6 +41,23 @@ export default async function PortfolioPage() {
       title: project.projectName,
     }))
 
+  const websites = (portfolio.websites?.websiteSet ?? []).flatMap((website) => {
+    const href = liveUrl(website.url)
+    if (!website.name || !href) return []
+
+    return [
+      {
+        host: websiteHost(href),
+        href,
+        image: getMedia(website.image),
+        role: website.role ?? undefined,
+        stack: splitTokens(website.stack),
+        summary: website.description ?? '',
+        title: website.name,
+      },
+    ]
+  })
+
   return (
     <div className="relative min-h-screen text-ink">
       <BlackHoleBackground />
@@ -54,7 +72,28 @@ export default async function PortfolioPage() {
         />
         <SkillGroups groups={skillGroups} title={portfolio.skills?.title} />
         <ProjectGrid projects={projects} title={portfolio.projects?.title} />
+        <WebsiteGrid
+          description={portfolio.websites?.description}
+          title={portfolio.websites?.title}
+          websites={websites}
+        />
       </div>
     </div>
   )
+}
+
+function liveUrl(value?: string | null) {
+  if (!value) return null
+
+  try {
+    const url = new URL(value)
+    if (url.protocol !== 'http:' && url.protocol !== 'https:') return null
+    return url.toString()
+  } catch {
+    return null
+  }
+}
+
+function websiteHost(href: string) {
+  return new URL(href).host.replace(/^www\./, '')
 }
