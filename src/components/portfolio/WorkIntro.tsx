@@ -72,7 +72,7 @@ export function WorkIntro({
             className="h-auto w-full"
             height={portrait.height}
             priority
-            quality={90}
+            quality={75}
             sizes="(max-width: 768px) 384px, (max-width: 1024px) 288px, 320px"
             src={portrait.url}
             width={portrait.width}

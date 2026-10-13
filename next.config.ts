@@ -9,6 +9,7 @@ const dirname = path.dirname(__filename)
 const nextConfig: NextConfig = {
   cacheComponents: true,
   images: {
+    minimumCacheTTL: 2678400, // 31 days
     qualities: [70, 75, 90],
     localPatterns: [
       {

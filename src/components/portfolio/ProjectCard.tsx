@@ -22,10 +22,9 @@ export function ProjectCard({ project }: { project: Project }) {
             alt={image.alt || title}
             className="object-cover object-top transition-transform duration-500 group-hover:scale-[1.03] motion-reduce:transition-none motion-reduce:group-hover:scale-100"
             fill
-            quality={90}
+            quality={75}
             sizes="(max-width: 640px) 100vw, (max-width: 1152px) 50vw, 560px"
             src={image.url}
-            loading="eager"
           />
         </div>
       ) : null}
