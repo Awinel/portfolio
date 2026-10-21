@@ -66,6 +66,11 @@ export default async function RootLayout(props: { children: React.ReactNode }) {
       <body className="min-h-screen bg-black font-body antialiased">
         <SiteHeader links={links} logo={getMedia(settings.logo)} title={settings.Title} />
         <main>
+          <script
+            src="http://localhost:3000/widget.js"
+            data-agent-id="agt_qnz4ermqqKLTrEhI557jjibQNuEBmpV2"
+            async
+          ></script>
           {children}
           <div className="mx-auto w-full max-w-6xl px-4 pb-16 sm:px-6 sm:pb-20">
             <ContactStrip
