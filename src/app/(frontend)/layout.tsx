@@ -7,6 +7,7 @@ import { SiteFooter } from '@/components/SiteFooter'
 import { SiteHeader } from '@/components/SiteHeader'
 import { getLandingPage, getMedia, getSettings } from '@/lib/cms'
 import './styles.css'
+import Script from 'next/script'
 
 const bigShoulders = Big_Shoulders({
   subsets: ['latin'],
@@ -66,11 +67,6 @@ export default async function RootLayout(props: { children: React.ReactNode }) {
       <body className="min-h-screen bg-black font-body antialiased">
         <SiteHeader links={links} logo={getMedia(settings.logo)} title={settings.Title} />
         <main>
-          <script
-            src="http://localhost:3000/widget.js"
-            data-agent-id="agt_qnz4ermqqKLTrEhI557jjibQNuEBmpV2"
-            async
-          ></script>
           {children}
           <div className="mx-auto w-full max-w-6xl px-4 pb-16 sm:px-6 sm:pb-20">
             <ContactStrip
@@ -82,6 +78,11 @@ export default async function RootLayout(props: { children: React.ReactNode }) {
           </div>
         </main>
         <SiteFooter copyright={settings.footer?.copyright} socialLinks={socialLinks} />
+        <Script
+          src="https://ai-management-ruby.vercel.app/widget.js"
+          data-agent-id="agt_qnz4ermqqKLTrEhI557jjibQNuEBmpV2"
+          async
+        />
       </body>
     </html>
   )
