@@ -79,7 +79,7 @@ export default async function RootLayout(props: { children: React.ReactNode }) {
         </main>
         <SiteFooter copyright={settings.footer?.copyright} socialLinks={socialLinks} />
         <Script
-          src="https://ai-management-ruby.vercel.app/widget.js"
+          src="https://ai-agent-awinel.cl/widget.js"
           data-agent-id="agt_qnz4ermqqKLTrEhI557jjibQNuEBmpV2"
           async
         />
